@@ -1,0 +1,35 @@
+depression_detection/
+│
+├── data/
+│   ├── raw/
+│   │   └── reddit.csv                # Original Kaggle dataset
+│   ├── processed/
+│   │   └── reddit_clean.csv          # Cleaned dataset after preprocessing
+│
+├── notebooks/
+│   └── 01_exploration.ipynb          # EDA + nulls + distribution
+│   └── 02_preprocessing.ipynb        # Cleaning + text preprocessing
+│   └── 03_modeling.ipynb             # ML models
+│   └── 04_evaluation.ipynb           # Metrics, confusion matrices
+│
+├── src/
+│   ├── __init__.py
+│   ├── config.py                     # File paths, constants
+│   ├── utils.py                      # Helpers (cleaner, loaders)
+│   ├── preprocess.py                 # Cleaning pipeline
+│   ├── train_model.py                # TF-IDF + SVM training
+│   ├── inference.py                  # Predict function
+│
+├── models/
+│   ├── tfidf.pkl
+│   ├── svm_model.pkl
+│
+├── app/
+│   ├── app.py                        # Flask / FastAPI API for prediction
+│   ├── static/                       # css/js
+│   ├── templates/                    # HTML (optional)
+│
+├── logs/
+│   └── training.log                  # optional
+│
+└── README.md
