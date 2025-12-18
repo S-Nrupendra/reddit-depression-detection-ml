@@ -5,10 +5,17 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
-# Download NLTK resources (run only once)
-nltk.download("stopwords")
-nltk.download("wordnet")
-nltk.download("omw-1.4")
+def ensure_nltk_data():
+    try:
+        nltk.data.find("corpora/stopwords")
+        nltk.data.find("corpora/wordnet")
+        nltk.data.find("corpora/omw-1.4")
+    except LookupError:
+        nltk.download("stopwords")
+        nltk.download("wordnet")
+        nltk.download("omw-1.4")
+
+
 
 STOPWORDS = set(stopwords.words("english"))
 lemmatizer = WordNetLemmatizer()
@@ -61,6 +68,7 @@ def preprocess_and_save(
     input_path="../data/raw/reddit_depression_dataset.csv",
     output_path="../data/processed/reddit_clean.csv"
 ):
+    ensure_nltk_data()
     print("Loading dataset...")
     df = pd.read_csv(input_path)
 
@@ -80,9 +88,3 @@ def preprocess_and_save(
     print(f"Final shape: {df.shape}")
 
     return df
-
-if __name__ == "__main__":
-    preprocess_and_save(
-        input_path="data/raw/reddit_depression_dataset.csv",
-        output_path="data/processed/reddit_clean.csv"
-    )
