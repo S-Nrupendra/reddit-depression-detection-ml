@@ -11,13 +11,15 @@ from sklearn.metrics import (
 )
 
 # Logistic Regression
-def train_logistic_regression(X_train, y_train):
+def train_logistic_regression(X_train_tfidf, y_train):
     model = LogisticRegression(
+        class_weight="balanced",  # handle class imbalance
         max_iter=1000,
-        class_weight="balanced", # Very important for imbalanced data
-        n_jobs=-1
+        C=1.0,                    # good default regularization
+        solver="liblinear"        # stable for sparse text
     )
-    model.fit(X_train, y_train)
+
+    model.fit(X_train_tfidf, y_train)
     return model
 
 # Naive Bayes

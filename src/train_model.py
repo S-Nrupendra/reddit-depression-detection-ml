@@ -19,11 +19,19 @@ def split_data(df, test_size=0.2, random_state=42):
     return X_train, X_test, y_train, y_test
 
 # TF-IDF Vectorization
-def tfidf_vectorize(X_train, X_test, max_features=20000, ngram_range=(1,2)):
+def tfidf_vectorize(
+        X_train,
+        X_test,
+        max_features=20000
+):
     vectorizer = TfidfVectorizer(
         max_features=max_features,
-        ngram_range=ngram_range
+        ngram_range=(1,2),
+        min_df=5,
+        sublinear_tf=True,
+        lowercase=True
     )
+    
     X_train_tfidf = vectorizer.fit_transform(X_train)
     X_test_tfidf = vectorizer.transform(X_test)
     return X_train_tfidf, X_test_tfidf, vectorizer
