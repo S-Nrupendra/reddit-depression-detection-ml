@@ -42,18 +42,6 @@ The cleaned dataset is saved separately to avoid repeated preprocessing.
 
 ---
 
-Nice — this section is already good. I’ll **rewrite it cleanly and professionally**, while **implicitly addressing all your doubts**:
-
-* why unigrams still work
-* why bigrams help only a little
-* why more features don’t help much
-* why recall-focused stability matters
-* why `min_df` and `sublinear_tf` are important
-
-I’ll keep it **README-ready**, **interview-safe**, and **technically correct**.
-
----
-
 ## ✨ Feature Engineering (TF-IDF)
 
 We use **TF-IDF vectorization** to convert Reddit posts into numerical features that can be consumed by machine learning models.
