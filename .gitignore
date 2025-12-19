@@ -1,3 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
 # Ignore raw and processed data
-data/raw/
-data/processed/
+data/
+
+# Large ML models
+*.pkl
+
+!models/
+!models/*.pkl
